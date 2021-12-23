@@ -1,24 +1,24 @@
 # Project Work Biblioteca
 
-   1. Tecnologie utilizzate
+1. Tecnologie utilizzate
 
-	
     • Database MySql vers. 8.
     • WebServer Tomcat 9.
     • Java JDK 8.
     • Servlet/Jsp
     • Web Service RestFul
 
-   2. Struttura del Progetto
-   
+2. Struttura del Progetto
+
     L’applicazione verrà realizzata secondo il Pattern MVC
-   3. Descrizione entità
-   
+
+3. Descrizione entità
+
 	Le entità saranno le seguenti:
     1. Utente
     2. Libro
     3. Genere
-	
+
 3.1. Utente
 
     • Id
@@ -48,27 +48,26 @@
     • genere
 
 4. Presentazione Biblioteca
-            
+
         In questa sezione verrà descritta la componente di View relativa al catalogo online di una biblioteca.
-  
 
 4.1. Pagine Pubbliche
-	
+
     • Landing Page/ Registrazione
     • Login
     • Logout
-	
+
 4.1.1 Landing Page/Registrazione
 
 	  La Landing Page presenterà una form di Registrazione ed un link alla pagina di Login.
     Una volta Registrato con successo l’utente verrà reindirizzato alla Home
+
 4.1.2 Login
 
 	La Pagina di login permetterà agli utenti di loggarsi.
 	
 	Una volta completata con successo la login l’utente verrà reindirizzato home.
-		
-	
+
 4.2. Pagine Private
 
     • Home 
@@ -100,6 +99,7 @@
 
     • Catalogo Libri
     • Gestione Utenti
+
 4.1.2 Catalogo Libri
 
 	Nella Pagina Catalogo Libri verrà visualizzata una tabella con tutte le info relative ai libri registrati nel sistema
@@ -116,27 +116,31 @@
 
     • Aggiungi Libro
     • Aggiungi Genere
+
 4.1.3 Aggiungi Libro
-	
+
 	Form aggiunta Libro
+
 4.1.4 Modifica Libro
-	
+
 	Form Modifica Libro
+
 4.1.5 Aggiungi Genere
 
 	Form aggiunta Genere
+
 4.1.6 Gestione Utenti
 
 	La Pagina Gestione Utenti presenterà una tabella con la lista degli Utenti.
 	
 	Sarà inoltre presente la CTA Aggiungi Utente
+
 4.1.7 Aggiungi Utente
-	            
+
     Form Aggiunta Utente
 
 4.1.8 Logout
 
-  
     In ogni pagina privata dovrà inoltre essere presente un pulsante di Logout.
     Alla avvenuta Logout l’utente verrà reindirizzato alla Landing Page/Registrazione. 
 
