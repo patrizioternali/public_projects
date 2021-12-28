@@ -1,20 +1,38 @@
 package it.ternali.biblioteca.model.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "utenti")
 public class Utente {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(unique = true)
+    @NotEmpty(message = "L'username non puo essere vuoto")
     private String username;
+    @NotEmpty(message = "La password non puo essere vuota")
     private String password;
+    @Column(unique = true)
+    @NotEmpty(message = "L'email non puo essere vuota")
+    @Email(message = "Inserire un email valida")
     private String email;
-    private Ruolo ruolo;
+    private String ruolo;
+    @NotNull(message = "La data di nascita non puo essere vuota")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataDiNascita;
 
     public Utente() {
     }
 
-    public Utente(int id, String username, String password, String email, Ruolo ruolo, LocalDate dataDiNascita) {
+    public Utente(Long id, String username, String password, String email, String ruolo, LocalDate dataDiNascita) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -23,11 +41,11 @@ public class Utente {
         this.dataDiNascita = dataDiNascita;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -55,11 +73,11 @@ public class Utente {
         this.email = email;
     }
 
-    public Ruolo getRuolo() {
+    public String getRuolo() {
         return ruolo;
     }
 
-    public void setRuolo(Ruolo ruolo) {
+    public void setRuolo(String ruolo) {
         this.ruolo = ruolo;
     }
 

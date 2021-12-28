@@ -1,5 +1,7 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
     <head>
         <!-- Design by foolishdeveloper.com -->
         <title>Glassmorphism login Form Tutorial in html css</title>
@@ -115,7 +117,7 @@
             }
             .social div{
                 background: red;
-                width: 150px;
+                width: 200px;
                 border-radius: 3px;
                 padding: 5px 10px 10px 5px;
                 background-color: rgba(255,255,255,0.27);
@@ -125,11 +127,18 @@
             .social div:hover{
                 background-color: rgba(255,255,255,0.47);
             }
-            .social .fb{
-                margin-left: 25px;
-            }
             .social i{
                 margin-right: 4px;
+            }
+            .go {
+                margin-left: 65px;
+            }
+            .a {
+                text-decoration: none;
+            }
+            .error {
+                color: indianred;
+                position: center;
             }
 
         </style>
@@ -139,23 +148,28 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form action="/register" method="post">
+    <form:form action="checkRegistration" method="post" modelAttribute="utente">
+        <c:if test="${register_error == true}">
+            <span class="error">Errore, inserisci tutti i dati.</span>
+        </c:if>
         <h3>Registrati</h3>
 
         <label for="username">Username</label>
-        <input type="text" placeholder="Username" id="username">
+        <form:input path="username" type="text" placeholder="Username" id="username" />
 
         <label for="email">Email</label>
-        <input type="text" placeholder="Email" id="email">
+        <form:input path="email" type="text" placeholder="Email" id="email" />
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
+        <form:input path="password" type="password" placeholder="Password" id="password" />
 
-        <button>Log In</button>
+        <label for="data">Data di nascita</label>
+        <form:input path="dataDiNascita" type="date" id="data" />
+
+        <button>Registrati</button>
         <div class="social">
-            <div class="go"><i class="fab fa-google"></i>  Google</div>
-            <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+            <div class="go"><a href="login" class="a">Hai gia un account?</a></div>
         </div>
-    </form>
+    </form:form>
     </body>
 </html>
