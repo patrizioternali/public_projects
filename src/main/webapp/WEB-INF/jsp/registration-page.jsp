@@ -53,7 +53,7 @@
                 bottom: -80px;
             }
             form{
-                height: 660px;
+                height: 730px;
                 width: 400px;
                 background-color: rgba(255,255,255,0.13);
                 position: absolute;
@@ -148,8 +148,8 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form:form action="checkRegistration" method="post" modelAttribute="utente">
-        <c:if test="${register_error == true}">
+    <form:form action="register" method="post" modelAttribute="utente_register">
+        <c:if test="${reg_error == true}">
             <span class="error">Errore, inserisci tutti i dati.</span>
         </c:if>
         <h3>Registrati</h3>
@@ -168,7 +168,7 @@
 
         <button>Registrati</button>
         <div class="social">
-            <div class="go"><a href="login" class="a">Hai gia un account?</a></div>
+            <div class="go"><a href="logincheck" class="a">Hai gia un account?</a></div>
         </div>
     </form:form>
     </body>

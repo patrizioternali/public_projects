@@ -1,5 +1,8 @@
-package it.ternali.biblioteca.model.entity;
+package it.ternali.biblioteca.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -8,6 +11,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "utenti")
 public class Utente {
@@ -29,11 +35,7 @@ public class Utente {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataDiNascita;
 
-    public Utente() {
-    }
-
-    public Utente(Long id, String username, String password, String email, String ruolo, LocalDate dataDiNascita) {
-        this.id = id;
+    public Utente(String username, String password, String email, String ruolo, LocalDate dataDiNascita) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -41,51 +43,4 @@ public class Utente {
         this.dataDiNascita = dataDiNascita;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getRuolo() {
-        return ruolo;
-    }
-
-    public void setRuolo(String ruolo) {
-        this.ruolo = ruolo;
-    }
-
-    public LocalDate getDataDiNascita() {
-        return dataDiNascita;
-    }
-
-    public void setDataDiNascita(LocalDate dataDiNascita) {
-        this.dataDiNascita = dataDiNascita;
-    }
 }

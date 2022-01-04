@@ -1,4 +1,4 @@
-package it.ternali.biblioteca.model.entity;
+package it.ternali.biblioteca.model;
 
 public enum Stato {
 

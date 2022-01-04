@@ -53,7 +53,7 @@
                 bottom: -80px;
             }
             form{
-                height: 520px;
+                height: 570px;
                 width: 400px;
                 background-color: rgba(255,255,255,0.13);
                 position: absolute;
@@ -112,7 +112,8 @@
                 cursor: pointer;
             }
             .social{
-                margin-top: 30px;
+                margin-top: 25px;
+                margin-left: 85px;
                 display: flex;
             }
             .social div{
@@ -127,14 +128,24 @@
             .social div:hover{
                 background-color: rgba(255,255,255,0.47);
             }
-            .social .fb{
-                margin-left: 25px;
-            }
             .social i{
                 margin-right: 4px;
             }
             .error {
                 color: indianred;
+            }
+            .go {
+                text-align: center;
+            }
+            .a {
+                text-decoration: none;
+            }
+            .forgotpw {
+                margin-top: 25px;
+                text-align: center;
+            }
+            .a2 {
+                text-decoration: none;
             }
 
         </style>
@@ -144,11 +155,11 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-        <form:form action="checklogin" method="post" modelAttribute="loginValidator">
-            <c:if test="${login_error == true}">
+        <form:form action="login" method="get" modelAttribute="log_validator">
+            <c:if test="${log_error == true}">
                 <span class="error">Errore durante il login.</span>
             </c:if>
-            <h3>Login Here</h3>
+            <h3>Login</h3>
 
             <label for="email">Email</label>
             <form:input path="email" type="text" placeholder="Email" id="email" />
@@ -158,9 +169,9 @@
 
             <button>Log In</button>
             <div class="social">
-                <div class="go"><i class="fab fa-google"></i>  Google</div>
-                <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+                <div class="go"><a href="registercheck" class="a">Registrati</a></div>
             </div>
+            <div class="forgotpw"><a class="a2">Hai dimenticato la password?</a></div>
         </form:form>
     </body>
 </html>
