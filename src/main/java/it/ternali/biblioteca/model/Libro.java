@@ -25,13 +25,13 @@ public class Libro {
     @Column(name = "anno")
     private LocalDate anno;
     @Column(name = "stato")
-    private Stato stato;
+    private String stato;
     private String image;
 
     public Libro() {
     }
 
-    public Libro(int id, String titolo, String autore, Genere genere, LocalDate anno, Stato stato) {
+    public Libro(int id, String titolo, String autore, Genere genere, LocalDate anno, String stato) {
         this.id = id;
         this.titolo = titolo;
         this.autore = autore;

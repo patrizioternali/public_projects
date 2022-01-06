@@ -10,9 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -22,37 +19,25 @@ public class RegistrationController {
     private UtenteService service;
 
     @GetMapping("/registercheck")
-    public String redirectRegister(Model model, HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            if (session.getAttribute("logged") != null) {
-                System.out.println("Utente già loggato, reindirizzamento alla home-page");
-                return "redirect:/homepage";
-            } else {
-                System.out.println("Utente non registrato con sessione, rendirizzamento alla register-page");
-                model.addAttribute("utente_register", new RegistrationValidatorUser());
-                return "registration-page";
-            }
-        } else {
-            System.out.println("Utente senza sessione reindirizzamento alla root-page");
-            return "redirect:/";
-        }
+    public String redirectRegister(Model model) {
+        model.addAttribute("utente_register", new RegistrationValidatorUser());
+        return "registration-page";
     }
 
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute("utente_register") RegistrationValidatorUser validatorUser,
-                                 BindingResult result, Model model, HttpSession session) {
+                                 BindingResult result, Model model) {
+        validatorUser.setRuolo(Ruolo.USER.toString());
         if (result.hasErrors()) {
             model.addAttribute("reg_error", true);
             System.out.println("Errore durante la registrazione");
-            return "redirect://";
+            return "redirect:/registercheck";
         }
-        validatorUser.setRuolo(Ruolo.USER.toString());
         if (service.save(validatorUser)) {
-            session.setAttribute("logged", true);
+            System.out.println("Registrazione andata a buon fine.");
             return "redirect:/homepage";
         }
-        return "redirect://";
+        return "redirect:/registercheck";
     }
 
 }

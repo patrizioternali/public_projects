@@ -13,18 +13,18 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-public class RegistrationValidatorUser {
+public class AddValidatorUser {
 
-    @NotEmpty(message = "L'username non può essere vuoto.")
+    @NotEmpty(message = "L'username dev'essere specificato.")
     private String username;
-    @NotEmpty(message = "L'email non può essere vuota.")
-    @Email(message = "Devi inserire un'email valida.")
+    @NotEmpty(message = "L'email dev'essere specificata.")
+    @Email(message = "Inserire un'email valida.")
     private String email;
-    @NotEmpty(message = "La password non può essere vuota.")
+    @NotEmpty(message = "La password dev'essere specificata.")
     private String password;
-    @NotNull(message = "La data di nascita non può essere vuota.")
+    @NotNull(message = "La data di nascita dev'essere specificata.")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataDiNascita;
+    @NotEmpty(message = "Il ruolo dev'essere specificato.")
     private String ruolo;
-
 }

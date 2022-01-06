@@ -8,7 +8,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Patrix'Books</title>
+        <title>Home page</title>
 
         <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
@@ -48,14 +48,12 @@
             <nav class="navbar">
                 <a href="#home">HOME</a>
                 <a href="#catalogo">CATALOGO LIBRI</a>
-                <c:if test="${admin != null}">
+                <c:if test="${admin == true}">
                     <a href="#gestione-libri">GESTIONE LIBRI*</a>
                     <a href="#gestione-catalogo">GESTIONE CATALOGO*</a>
                     <a href="gestione/utenti">GESTIONE UTENTI*</a>
                 </c:if>
-                <c:if test="${logged == true}">
-                    <a href="logout">LOGOUT</a>
-                </c:if>
+                <a href="/logout">LOGOUT</a>
             </nav>
         </div>
 

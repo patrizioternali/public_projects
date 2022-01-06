@@ -9,6 +9,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class UtenteService {
@@ -17,7 +20,7 @@ public class UtenteService {
     private BCryptPasswordEncoder passwordEncoder;
 
     public Utente checkLogin(LoginValidatorUser validatorUser) {
-        Utente utente = repository.findByEmail(validatorUser.getEmail());
+        Utente utente = repository.findByUsername(validatorUser.getUsername());
         if (utente != null) {
             if (passwordEncoder.matches(validatorUser.getPassword(), utente.getPassword())) {
                 System.out.println("Login eseguito correttamente");
@@ -45,6 +48,10 @@ public class UtenteService {
         return true;
     }
 
+    public void save(Utente utente) {
+        repository.save(utente);
+    }
+
     public boolean checkIfExist(String email) {
         Utente utente = repository.findByEmail(email);
         if (utente != null) {
@@ -56,5 +63,18 @@ public class UtenteService {
 
     public void encrypt(RegistrationValidatorUser validatorUser, Utente utente) {
         utente.setPassword(passwordEncoder.encode(validatorUser.getPassword()));
+    }
+
+    public List<Utente> findAll() {
+        return repository.findAll();
+    }
+
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
+
+    public Utente findById(Long id) {
+        Optional<Utente> optional = repository.findById(id);
+        return optional.orElse(null);
     }
 }
